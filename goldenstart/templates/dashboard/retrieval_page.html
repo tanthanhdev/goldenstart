@@ -1,0 +1,78 @@
+{% extends 'layouts/base.html' %}
+{% load static%}
+{% load custom_tags %}
+
+{% block head %}
+    <title>Golden Start</title>
+    <meta name="description" content="">
+{% endblock head %}
+
+{% block css %}
+<link rel="stylesheet" href="{%static 'css/retrieval_page.css'%}">
+{% endblock %}
+
+{% block content %}
+    <div class="old-container-fluid" style="height: 100%; background-color: black; padding-top: 25vh;">
+
+        <div class="form-container">
+            <div class="row g-0">
+                <div class="col-3"></div>
+                <div class="col">
+                    <img src="{% static 'images/additive.png' %}" class="mb-5" />
+
+                    <!-- List of file -->
+                    <div class="retrieval text-white">
+                        <h1>Please find your completed workpaper ready below:</h1>
+                        <br>
+                        <br>
+                        
+                        <!-- List of file download -->
+                        {% for document in documents %}
+                        <div class="mb-2">
+                            <img src="{% static 'images/icon-download.png' %}" class="mr-1" />
+                            <button class="document-item" onclick="downloadFile('{{ document.document.url }}', '{{ document.document | filename }}')" >{{ document.document | filename }}</button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col "></div>
+            </div>
+        </div>
+
+        <!-- Two stripes -->
+        <div class="stripe-1"></div>
+        <div class="stripe-2"></div>
+        
+    </div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    function downloadFile(file_url, filename) {
+        axios({
+            method: "GET",
+            url: file_url,
+            responseType: 'blob',
+            onDownloadProgress: event => {
+                if (event.loaded === event.total) {
+                    // send a GET request to the backend telling that download is complete
+                    axios({
+                        method: "POST",
+                        url: "/post-downloaded", 
+                    })
+                    .then(console.log("download incremented"))
+                    .catch(error => console.log(error))
+                }
+            }
+        }).then(response => {
+            // download the file
+            const aTag = document.createElement("a");
+            aTag.href = URL.createObjectURL(response.data);
+            //aTag.download = filename + "." + resp.data.type.split("/")[1];
+            aTag.download = filename;
+            aTag.click();
+        })
+    }
+
+</script>
+{% endblock %}

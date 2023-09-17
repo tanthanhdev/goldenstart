@@ -1,0 +1,116 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, h1, h2, h3, h4, h5, h6, p, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+html, body {
+    margin: 0px;
+    height: 100%;
+}
+
+/* Additive form */
+#additive-email {
+    max-width: 400px;
+}
+
+#additive-access-code {
+    max-width: 400px;
+}
+
+/* Stripes */
+.stripe-1 {
+    width: 2000px;
+    height: 80px;
+    rotate: -45deg;
+    background-color: #fece02;
+    position: fixed;
+    right: -636px;
+    bottom: 166px;
+}
+
+.stripe-2 {
+    width: 2000px;
+    height: 80px;
+    rotate: -45deg;
+    background-color: #1a86b2;
+    position: fixed;
+    right: -820px;
+    bottom: 166px;
+}
+
+/* Form submit file */
+.form-container .container-upload {
+    background-color:  white;
+    border-radius: 20px;
+}
+
+.form-container .header-upload {
+    text-align: center;
+}
+
+.form-container .header-upload-text {
+    font-size: 1rem;
+    padding: 30px;
+}
+
+.form-container .content-upload {
+    padding: 40px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #f7f9fb;
+}
+
+.form-container #input-file {
+    display: none;
+}
+
+.form-container .box__input {
+    display: table-cell;
+    width: 10000px;
+    height: 140px;
+    border: 2px dashed #cfcfcf;
+    border-radius: 24px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.form-container .box__dragndrop {
+    color: #7f7f7f;
+}
+
+.form-container #error {
+    color: red;
+}

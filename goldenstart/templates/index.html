@@ -1,0 +1,84 @@
+{% extends 'layouts/base.html' %}
+{% load static%}
+
+{% block head %}
+    <title>Golden Start</title>
+    <meta name="description" content="">
+{% endblock head %}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+    <div class="old-container-fluid" style="height: 100%; background-color: black; padding-top: 25vh;">
+        <div class="form-container">
+            <div class="row g-0">
+                <div class="col-3"></div>
+                <div class="col">
+                    <img src="{% static 'images/additive.png' %}" class="mb-5" />
+                    
+                    <!-- submit info -->
+                    <form action="" method="POST" id="additive" class="">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="formAdditive" class="additive-email-label form-label text-white">Email</label>
+                            <input name="email" type="email" class="form-control" id="additive-email" placeholder="">
+                        </div>
+                        <div class="mb-4">
+                            <label for="formAdditive" class="additive-access-code-label form-label text-white">Access Code</label>
+                            <input name="access_code" type="text" class="form-control" id="additive-access-code" placeholder="" value="accountingWOW">
+                        </div>
+
+                        <input id="submit-additive-button " class="d-none" type="submit" value="submit" >
+                    </form>
+
+                    <!-- upload file -->
+                    <div class="container-upload d-none">
+                        <div class="header-upload">
+                            <h1 class="header-upload-text">Upload a zipped folder of K1 PFDs and we will process them, 
+                                then email you a completed workpaper.</h1>
+                        </div>
+                        <div class="content-upload">
+                            <form action="" method="POST" id="additive-upload" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="box__input">
+                                    <input type="file" class="box__file" name="document" id="input-file">
+                                    <label for="input-file"><span class="box__dragndrop">Click to browse or <br> drag and drop your files</span></label>
+                                    <!-- <input id="submit-additive-file-button" class="d-none" type="submit" value="submit" > -->
+                                    <div id="error"></div>
+                                    <div id="image-display"></div>
+                                </div>
+
+                                <!-- loading -->
+                                <div class="box__uploading d-none">Uploading…</div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Confirmation -->
+                    <div class="confirmation text-white d-none">
+                        <h1>We've received your file <span class="file-name"></span>, and will be emailing you
+                        <br>
+                        shortly with a complete workpaper.
+                        </h1>
+                        <br>
+                        <span>Enjoy!!! <img src="{% static 'images/icon1.png' %}" class="ml-1" /></span>
+                    </div>
+                </div>
+                <div class="col "></div>
+            </div>
+        </div>
+
+        <!-- Two stripes -->
+        <div class="stripe-1"></div>
+        <div class="stripe-2"></div>
+        
+    </div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+
+
+</script>
+{% endblock %}
